@@ -11,11 +11,12 @@ public class UserRegistrationProblem {
 		ValidLastName rv2 = new ValidLastName();
 		ValidEmail rv3 = new ValidEmail();
 		MobileFormat rv4 = new MobileFormat();
+		PasswordRules rv5 = new PasswordRules();
 		rv1.firstname();
 		rv2.lastname();
 		rv3.validEmail();
 		rv4.preDefinedMobileFormat();
-		
+		rv5.min_8_character();
 	}
 }
 
@@ -77,7 +78,21 @@ class MobileFormat {
 		} else {
 			System.out.println("Invalid Mobile format");
 		}
-		
-	}
-} 
 
+	}
+}
+
+class PasswordRules {
+	void min_8_character() {
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Enter the password - min 8 character");
+		String password = userInput.next();
+		Pattern pattern = Pattern.compile("(?=.*[a-z])(?=\\S+$).{8,}");
+		Matcher matcher = pattern.matcher(password);
+		if (matcher.find()) {
+			System.out.println("Password => " + password);
+		} else {
+			System.out.println("Invalid Password");
+		}
+	}
+}
