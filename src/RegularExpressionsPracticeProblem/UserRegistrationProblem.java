@@ -45,6 +45,7 @@ class ValidLastName {
 		}
 	}
 }
+
 class ValidEmail {
 	 void validEmail() {
 		 Scanner userInput = new Scanner(System.in);
