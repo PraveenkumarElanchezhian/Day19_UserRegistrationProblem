@@ -34,10 +34,10 @@ class ValidLastName {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter a valid Last Name");
 		Pattern p = Pattern.compile("\\b([A-Z]\\w*)\\b");
-		String firstName = userInput.next();
-		Matcher matcher = p.matcher(firstName);
+		String lastName = userInput.next();
+		Matcher matcher = p.matcher(lastName);
 		if (matcher.find()) {
-			System.out.println("Last Name => " + firstName);
+			System.out.println("Last Name => " + lastName);
 		} else {
 			System.out.println("Invalid Character");
 		}
