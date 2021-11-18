@@ -1,26 +1,27 @@
 package RegularExpressionsPracticeProblem;
 
 import java.util.regex.Pattern;
+
+import org.junit.Test;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class UserRegistrationProblem {
 
 	public static void main(String[] args) {
-		UserRegistration rv1 = new UserRegistration();
-		ValidLastName rv2 = new ValidLastName();
-		ValidEmail rv3 = new ValidEmail();
-		MobileFormat rv4 = new MobileFormat();
-		PasswordRules rv5 = new PasswordRules();
-		rv1.firstname();
-		rv2.lastname();
-		rv3.validEmail();
-		rv4.preDefinedMobileFormat();
-		rv5.min_8_character();
+		UserRegistration rv = new UserRegistration();
+		rv.firstname();
+		rv.lastname();
+		rv.validEmail();
+		rv.preDefinedMobileFormat();
+		rv.min_8_character();
 	}
 }
 
 class UserRegistration {
+
+	@Test
 	public void firstname() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter the First Name - Starts with Cap and has minimum 3 characters");
@@ -33,9 +34,8 @@ class UserRegistration {
 			System.out.println("Invalid Character");
 		}
 	}
-}
 
-class ValidLastName {
+	@Test
 	public void lastname() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter the Last Name - Starts with Cap and has minimum 3 characters");
@@ -48,9 +48,8 @@ class ValidLastName {
 			System.out.println("Invalid Character");
 		}
 	}
-}
 
-class ValidEmail {
+	@Test
 	void validEmail() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter a valid email");
@@ -64,9 +63,8 @@ class ValidEmail {
 			System.out.println("Invalid email");
 		}
 	}
-}
-
-class MobileFormat {
+	
+	@Test
 	public void preDefinedMobileFormat() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter a mobile number");
@@ -78,16 +76,14 @@ class MobileFormat {
 		} else {
 			System.out.println("Invalid Mobile format");
 		}
-
 	}
-}
-
-class PasswordRules {
+	
+	@Test
 	void min_8_character() {
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("Enter the Password - min 8 character, Should have at least 1 Upper Case and Numeric number");
+		System.out.println("Enter the Password - min 8 character, Should have at least 1 Upper Case, Numeric number and Special character");
 		String password = userInput.next();
-		Pattern pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=\\S+$).{8,}");
+		Pattern pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])(?=\\S+$).{8,}");
 		Matcher matcher = pattern.matcher(password);
 		if (matcher.find()) {
 			System.out.println("Password => " + password);
