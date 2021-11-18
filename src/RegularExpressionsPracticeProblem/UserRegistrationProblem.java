@@ -85,9 +85,9 @@ class MobileFormat {
 class PasswordRules {
 	void min_8_character() {
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("Enter the Password - min 8 character, Should have at least 1 Upper Case");
+		System.out.println("Enter the Password - min 8 character, Should have at least 1 Upper Case and Numeric number");
 		String password = userInput.next();
-		Pattern pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}");
+		Pattern pattern = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=\\S+$).{8,}");
 		Matcher matcher = pattern.matcher(password);
 		if (matcher.find()) {
 			System.out.println("Password => " + password);
